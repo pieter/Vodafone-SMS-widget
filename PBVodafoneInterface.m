@@ -13,7 +13,6 @@
 
 - (id)initWithWebView:(WebView *)webview;
 {
-	NSLog(@"hallo");
 	if (!(self = [super init]))
 		return nil;
 	
@@ -22,7 +21,6 @@
 
 - (void) windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject
 {
-	NSLog(@"Oooh yeah!");
 	[windowScriptObject setValue:[[PBAddressBook alloc] init] forKey:@"AddressBook"];
 }
 @end

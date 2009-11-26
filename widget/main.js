@@ -17,7 +17,6 @@ function load()
 
 		var data = AddressBook.numbers();
 		$(function() {
-			alert("hi");
 			$("#phoneNumber").autocomplete(data, { 
 				width: 240,
 				formatItem: function(n) { return "" + n[0] + "--" + n[2]; },
