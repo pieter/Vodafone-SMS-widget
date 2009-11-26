@@ -81,9 +81,10 @@
 }
 
 
-+ (BOOL)isSelectorExcludedFromWebScript:(SEL)aSelector
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
 {
-    if (aSelector == @selector(numbers:)) return NO;
+    if (sel == @selector(numbers))
+		return NO;
     return YES;
 }
 
