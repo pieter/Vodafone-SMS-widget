@@ -56,7 +56,7 @@ function hide()
 function show()
 {
 	var data = AddressBook.numbers();
-	$("#phoneNumber").setOption({data: data});
+	$("#phoneNumber").setOptions({data: data});
     // Restart any timers that were stopped on hide
 }
 
