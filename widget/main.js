@@ -22,8 +22,9 @@ function load()
 				width: 240,
 				formatItem: function(n) { return "" + n[0] + "--" + n[2]; },
 				formatResult: function(data) { return data[2]; },
+				scrollHeight: 100,
 				matchContains: true
-			});
+			}).result(function() { $("#body").focus() });
 		});
 }
 
