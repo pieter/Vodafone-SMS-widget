@@ -1,27 +1,5 @@
 #import <Cocoa/Cocoa.h>
-#import <AddressBook/ABAddressBook.h>
-#import <AddressBook/ABPerson.h>
-#import <AddressBook/ABSearchElement.h>
-#import <AddressBook/ABMultiValue.h>
-ABSearchElement *elementForName(NSString *name)
-{
-	ABSearchElement *firstName = [ABPerson searchElementForProperty:kABFirstNameProperty
-		label:nil
-		key:nil
-		value:name
-		comparison:kABContainsSubString];
-
-	ABSearchElement *lastProperty = [ABPerson searchElementForProperty:kABLastNameProperty
-		label:nil
-		key:nil
-		value:name
-		comparison:kABContainsSubString];
-
-	ABSearchElement *nameProperty = [ABSearchElement searchElementForConjunction:kABSearchOr
-		children:[NSArray arrayWithObjects:firstName, lastProperty, nil]];
-
-	return nameProperty;
-}
+#import <PBAddressBook.h>
 
 int main (int argc, char const *argv[])
 {
@@ -30,21 +8,10 @@ int main (int argc, char const *argv[])
 		exit(1);
 	}
 
-	ABAddressBook *AB = [ABAddressBook sharedAddressBook];
-
-	ABSearchElement *search = elementForName([NSString stringWithUTF8String:argv[1]]);
-	NSArray *peopleFound = [AB recordsMatchingSearchElement:search];
-
-	for (ABPerson *person in peopleFound) {
-		ABMultiValue *phone = [person valueForProperty:kABPhoneProperty];
-		for (size_t i = 0; i < [phone count]; i++) {
-			NSString *identifier = [phone identifierAtIndex:i];
-			id value = [phone valueAtIndex:i];
-			NSString *label = [phone labelAtIndex:i];
-			printf("%s -- %s (%s)\n", [[person valueForProperty:kABFirstNameProperty] UTF8String], [value UTF8String], [label UTF8String]);
-		}
-		// NSLog(@"Phone: %@", [phone primaryIdentifier]);
-	}
+	NSArray *peopleFound = [[[PBAddressBook alloc] init] numbers];
+	for (NSArray *n in peopleFound)
+		printf("%s -- %s (%s)\n", [[n objectAtIndex:0] UTF8String], [[n objectAtIndex:2] UTF8String], [[n objectAtIndex:1] UTF8String]);
+	
 	// NSLog(@"Persons: %@", peopleFound);
 
 	return 0;

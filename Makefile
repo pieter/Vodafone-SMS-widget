@@ -1,2 +1,2 @@
 all:
-	gcc -fobjc-gc -std=gnu99 -framework Cocoa -framework AddressBook test.m -o addressbook_test
+	gcc -I. -fobjc-gc -std=gnu99 -framework Cocoa -framework AddressBook test.m PBAddressBook.m -o addressbook_test

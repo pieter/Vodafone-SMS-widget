@@ -4,5 +4,5 @@
 {
 }
 
-+ (NSArray *)numbers;
+- (NSArray *)numbers;
 @end
