@@ -1,0 +1,6 @@
+build/
+Vodafone.wdgt
+Vodafone_Prefix.pch
+addressbook_test
+Vodafone.xcodeproj/*.mode1v3
+Vodafone.xcodeproj/*.pbxuser
